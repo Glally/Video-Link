@@ -15,10 +15,10 @@ add_filter( 'mce_external_plugins', 'get_js' );
 add_filter( 'mce_buttons', 'get_button' );
 
 // Get the javascript file so the button can work
-function get_js( $plugin_array ) {
+function get_js( $js ) {
 
-    $plugin_array['video_link'] = plugins_url( 'link.js', __FILE__ );
-    return $plugin_array;
+    $js['video_link'] = plugins_url( 'link.js', __FILE__ );
+    return $js;
 }
 
 // retrieve the button from JS file
