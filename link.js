@@ -4,14 +4,16 @@ tinymce.PluginManager.add('video_link', function(editor, url) {
     image: url + '/logo.png',
     icon: false,
     onclick: function() {
-      // Open window
+      // Open  a window to submit text
       editor.windowManager.open({
-        title: 'Enter link',
+        title: 'Copy video links from Youtube or Dailymotion',
         body: [
-          {type: 'textbox', name: 'title', label: 'Title'}
+          {type: 'textbox', name: 'title', label: 'Enter link'},  {type: 'textbox', name: 'Link', label: 'Link Name'}
         ],
         onsubmit: function(e) {
 			var urls = e.data.title;
+			var linkName = e.data.Link;
+			var linkName = '<a class = "nounderline" href="'+urls+'"'+'>'+linkName+'</a>';
 			// Check if it is a Dailymotion link
 			if(urls.match(/^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/) ){
 				urls2 = "<iframe class = 'embed'" + "src="+"'"+urls +"'"+ 'frameborder="0"'+ 'allowfullscreen="allowfullscreen">';
@@ -23,6 +25,8 @@ tinymce.PluginManager.add('video_link', function(editor, url) {
 			}
 			// Check if its a Youtube link
 			if(urls.match(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/) ){
+				//Get rid of &amp;t= from link
+				 urls=urls.split(/[&]/)[0];
 				urls = "<iframe class = 'embed'" + "src="+"'"+urls +"'"+ 'frameborder="0"'+ 'allowfullscreen="allowfullscreen">';
 				// Make sure the link is has embed
 				urls = urls.replace("/watch?v=","/embed/");
@@ -30,6 +34,9 @@ tinymce.PluginManager.add('video_link', function(editor, url) {
 				editor.insertContent( urls);
 			}
           	
+			if(! urls.match(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/) && ! urls.match(/^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/) ){
+				editor.insertContent( linkName);
+			}
         }
       });
     }
