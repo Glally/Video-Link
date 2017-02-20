@@ -1,0 +1,20 @@
+/* Normal size for videos */
+iframe.embed {
+	width:800px;
+	height: 450px;
+ 
+
+	}
+
+/* size for videos on small screens */
+@media screen and  (max-width:980px) {	
+
+	iframe.embed {
+
+	width:300px;
+	height: 200px;
+ 
+
+	}
+
+}
