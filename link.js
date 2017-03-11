@@ -37,7 +37,7 @@ tinymce.PluginManager.add('video_link', function(editor, url) {
         if(e.data.ch3 === true) {
 
             size = "small";
-			length='width="300" height="200"';
+			length='width="300" height="169"';
         }
 
 			var linkName = e.data.Link;
