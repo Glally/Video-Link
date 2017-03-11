@@ -5,6 +5,18 @@ iframe.embed {
  
 
 	}
+iframe.medium{
+	width:560px;
+	height:315px;
+}
+
+iframe.small{
+	width:150px;
+	height:100px;
+}
+#fixed{
+	position: fixed;
+}
 
 /* size for videos on small screens */
 @media screen and  (max-width:980px) {	
@@ -15,6 +27,14 @@ iframe.embed {
 	height: 200px;
  
 
+	}
+	iframe.medium{
+	width:150px;
+	height:100px;
+}
+	iframe.small{
+		width:75px;
+		height:50px;
 	}
 
 }

@@ -8,10 +8,34 @@ tinymce.PluginManager.add('video_link', function(editor, url) {
       editor.windowManager.open({
         title: 'Copy video links from Youtube or Dailymotion',
         body: [
-          {type: 'textbox', name: 'title', label: 'Enter link'},  {type: 'textbox', name: 'Link', label: 'Link Name'}
+          {type: 'textbox', name: 'title', label: 'Enter link'},  {type: 'textbox', name: 'Link', label: 'Link Name'},
+		  {type: 'checkbox',name:'ch1',text:"large",value:"embed"},
+		  {type: 'checkbox',name:'ch2', text:"medium",value:"medium"},
+		  {type: 'checkbox',name:'ch3',text:"small",value:"small"}
         ],
+		 
         onsubmit: function(e) {
+			
 			var urls = e.data.title;
+			 // Define size variable
+			var	size = '';
+
+        // Check first checkbox
+        if(e.data.ch1 === true) {
+
+            size = "embed";
+        }
+        // Check second checkbox
+        if(e.data.ch2 === true) {
+
+            size = "medium";
+        }
+		// Check third checkbox
+        if(e.data.ch3 === true) {
+
+            size = "small";
+        }
+
 			var linkName = e.data.Link;
 			var linkName = '<a class = "nounderline" href="'+urls+'"'+'>'+linkName+'</a>';
 			// Check if it is a Dailymotion link
@@ -27,7 +51,7 @@ tinymce.PluginManager.add('video_link', function(editor, url) {
 			if(urls.match(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/) ){
 				//Get rid of &amp;t= from link
 				 urls=urls.split(/[&]/)[0];
-				urls = "<iframe class = 'embed'" + "src="+"'"+urls +"'"+ 'frameborder="0"'+ 'allowfullscreen="allowfullscreen">';
+				urls = "<iframe class ="+"'"+size+"'" + "src="+"'"+urls +"'"+ 'frameborder="0"'+ 'allowfullscreen="allowfullscreen">';
 				// Make sure the link is has embed
 				urls = urls.replace("/watch?v=","/embed/");
 				// Insert the video from Youtube
