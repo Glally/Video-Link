@@ -40,7 +40,7 @@ tinymce.PluginManager.add('video_link', function(editor, url) {
 			var linkName = '<a class = "nounderline" href="'+urls+'"'+'>'+linkName+'</a>';
 			// Check if it is a Dailymotion link
 			if(urls.match(/^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/) ){
-				urls2 = "<iframe class = 'embed'" + "src="+"'"+urls +"'"+ 'frameborder="0"'+ 'allowfullscreen="allowfullscreen">';
+				urls2 = "<iframe class ="+"'"+size+"'" + "src="+"'"+urls +"'"+ 'frameborder="0"'+ 'allowfullscreen="allowfullscreen">';
 				// Make sure the link is has embed
 				urls2 = urls2.replace("http://www.dailymotion.com/video/","http://www.dailymotion.com/embed/video/");
 				// Insert the video from Dailymotion
