@@ -25,20 +25,62 @@ iframe.small{
 
 	iframe.embed {
 
+	width:560px;
+	height:315px;
+	overflow:hidden;
+
+	}
+	iframe.medium{
+	width:400px;
+	height: 225px;
+	overflow:hidden;
+}
+	
+
+}
+/* size for videos on small screens */
+@media screen and  (max-width:400px) {	
+
+	iframe.embed {
+
+	width:400px;
+	height:225px;
+	overflow:hidden;
+
+	}
+	iframe.medium{
 	width:300px;
 	height: 169px;
+	overflow:hidden;
+	}
+	iframe.small{
+	width:150px;
+	height:69px;
+	overflow:hidden;
+	}
+
+}
+
+/* size for videos on small screens */
+@media screen and  (max-width:189px) {	
+
+	iframe.embed {
+
+	width:300px;
+	height:169px;
 	overflow:hidden;
 
 	}
 	iframe.medium{
 	width:150px;
-	height:100px;
+	height: 69px;
 	overflow:hidden;
-}
+	}
 	iframe.small{
-		width:75px;
-		height:50px;
-		overflow:hidden;
+	width:75px;
+	height:50px;
+	overflow:hidden;
 	}
 
 }
+
